@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,24 @@
   <link rel='icon' href='/ico/timer_icon.ico'>
   <title>Timer</title>
 </head>
+
 <body>
-  
+  <div class="container" id="container">
+    <div class="command__list">
+      <input value='START' name='timer-start' id='timer-start' class='timer-start' type='button'>
+      <input value='LAP' name='timer-lap' id='timer-lap' class='timer-lap' type='button'>
+      <input value='STOP' name='timer-stop' id='timer-stop' class='timer-stop' type='button'>
+      <input value='RESTART' name='timer-restart' id='timer-restart' class='timer-restart' type='button'>
+      <input value='CLEAR LAPS' name='timer-clear' id='timer-clear' class='timer-clear' type='button'>
+    </div>
+    <div class="timer">
+      <span id='timer__minutes'>00</span>
+      <span>:</span>
+      <span id='timer__seconds'>00</span>
+      <span>:</span>
+      <span id='timer__milliseconds'>00</span>
+    </div>
+  </div>
 </body>
+
 </html>
