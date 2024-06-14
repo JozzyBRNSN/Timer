@@ -5,19 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/src/css/css/style.css">
-  <link rel="stylesheet" href="/src/css/normalize.css/">
+  <link rel="stylesheet" href="/src/css/css/normalize.css">
   <link rel='icon' href='/ico/timer_icon.ico'>
   <title>Timer</title>
 </head>
 
 <body>
   <div class="container" id="container">
-    <div class="commands">
-      <input value='START' name='timer-start' id='timer-start' class='timer-start' type='button'>
-      <input value='LAP' name='timer-lap' id='timer-lap' class='timer-lap' type='button'>
-      <input value='STOP' name='timer-stop' id='timer-stop' class='timer-stop' type='button'>
-      <input value='RESTART' name='timer-restart' id='timer-restart' class='timer-restart' type='button'>
-      <input value='CLEAR LAPS' name='timer-clear' id='timer-clear' class='timer-clear' type='button'>
+    <div class="commands" id='commands'>
+
     </div>
     <div class="timer">
       <span id='timer__minutes'>00</span>
@@ -27,6 +23,8 @@
       <span id='timer__milliseconds'>00</span>
     </div>
   </div>
+
+  <script defer src='/src/app.js'></script>
 </body>
 
 </html>
