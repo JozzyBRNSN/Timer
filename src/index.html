@@ -13,14 +13,18 @@
 <body>
   <div class="container" id="container">
     <div class="commands" id='commands'>
-
+        <input value='START' name='timer-start' id='timer-start' class='timer-start' type='button'>
+        <input value='LAP' name='timer-lap' id='timer-lap' class='timer-lap' type='button'>
+        <input value='STOP' name='timer-stop' id='timer-stop' class='timer-stop' type='button'>
+        <input value='RESTART' name='timer-restart' id='timer-restart' class='timer-restart' type='button'>
+        <input value='CLEAR LAPS' name='timer-clear' id='timer-clear' class='timer-clear' type='button'>
     </div>
-    <div class="timer">
-      <span id='timer__minutes'>00</span>
+    <div class="timer" id='timer'>
+      <span id='timer-minutes'>00</span>
       <span>:</span>
-      <span id='timer__seconds'>00</span>
+      <span id='timer-seconds'>00</span>
       <span>:</span>
-      <span id='timer__milliseconds'>00</span>
+      <span id='timer-milliseconds'>00</span>
     </div>
   </div>
 

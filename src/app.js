@@ -1,40 +1,26 @@
-
+let lapsArr = [];
 
 let commands = document.getElementById("commands");
+let startInp = document.getElementById("timer-start");
+let lapInp = document.getElementById("timer-lap");
+let stopInp = document.getElementById("timer-stop");
+let restartInp = document.getElementById("timer-restart");
+let clearInp = document.getElementById("timer-clear");
+let minutes = document.getElementById("timer-minutes");
+let seconds = document.getElementById("timer-seconds");
+let milliseconds = document.getElementById("timer-milliseconds");
 
-let startInp = document.createElement("input");
-let lapInp = document.createElement("input");
-let stopInp = document.createElement("input");
-let restartInp = document.createElement("input");
-let clearInp = document.createElement("input");
+function stopTimer(minutesTimer, secondsTimer, millisecondsTimer) {
+  clearInterval(minutesTimer);
+  clearInterval(secondsTimer);
+  clearInterval(millisecondsTimer);
+}
 
-startInp.value = "START";
-lapInp.value = "LAP";
-stopInp.value = "STOP";
-restartInp.value = "RESTART";
-clearInp.value = "CLEAR LAPS";
-
-startInp.classList.add("input");
-lapInp.classList.add("input");
-stopInp.classList.add("input");
-restartInp.classList.add("input");
-clearInp.classList.add("input");
-
-startInp.type = "button";
-lapInp.type = "button";
-stopInp.type = "button";
-restartInp.type = "button";
-clearInp.type = "button";
-
-commands.appendChild(startInp);
-commands.appendChild(lapInp);
-commands.appendChild(stopInp);
-commands.appendChild(restartInp);
-commands.appendChild(clearInp);
-
-let minutes = document.getElementById("timer__minutes");
-let seconds = document.getElementById("timer__seconds");
-let milliseconds = document.getElementById("timer__milliseconds");
+function clearTimer(minutes, seconds, milliseconds) {
+  minutes.innerHTML = "00";
+  seconds.innerHTML = "00";
+  milliseconds.innerHTML = "00";
+}
 
 startInp.addEventListener("click", () => {
   let minutesTimer = setInterval(function () {
@@ -48,8 +34,31 @@ startInp.addEventListener("click", () => {
   }, 10);
 
   stopInp.addEventListener("click", () => {
-    clearInterval(minutesTimer);
-    clearInterval(secondsTimer);
-    clearInterval(millisecondsTimer);
+    stopTimer(minutesTimer, secondsTimer, millisecondsTimer);
+  });
+
+  restartInp.addEventListener("click", () => {
+    stopTimer(minutesTimer, secondsTimer, millisecondsTimer);
+    setTimeout(function () {
+      clearTimer(minutes, seconds, milliseconds);
+    }, 10);
+    minutesTimer = setInterval(function () {
+      minutes.innerHTML++;
+    }, 60000);
+    secondsTimer = setInterval(function () {
+      seconds.innerHTML++;
+    }, 1000);
+    millisecondsTimer = setInterval(function () {
+      milliseconds.innerHTML++;
+    }, 10);
+    
+    stopInp.addEventListener("click", () => {
+      stopTimer(minutesTimer, secondsTimer, millisecondsTimer);
+    });
+  });
+
+  clearInp.addEventListener("click", () => {
+    stopTimer(minutesTimer, secondsTimer, millisecondsTimer);
+    clearTimer(minutes, seconds, milliseconds);
   });
 });
