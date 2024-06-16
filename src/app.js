@@ -1,5 +1,3 @@
-let lapsArr = [];
-
 let commands = document.getElementById("commands");
 let startInp = document.getElementById("timer-start");
 let lapInp = document.getElementById("timer-lap");
@@ -9,6 +7,13 @@ let clearInp = document.getElementById("timer-clear");
 let minutes = document.getElementById("timer-minutes");
 let seconds = document.getElementById("timer-seconds");
 let milliseconds = document.getElementById("timer-milliseconds");
+
+function formatTimer(value) {
+  if (value.innerHTML < 10) {
+    value.innerHTML = "0" + value.innerHTML;
+  }
+  return value.innerHTML;
+}
 
 function stopTimer(minutesTimer, secondsTimer, millisecondsTimer) {
   clearInterval(minutesTimer);
@@ -25,12 +30,15 @@ function clearTimer(minutes, seconds, milliseconds) {
 startInp.addEventListener("click", () => {
   let minutesTimer = setInterval(function () {
     minutes.innerHTML++;
+    formatTimer(minutes);
   }, 60000);
   let secondsTimer = setInterval(function () {
     seconds.innerHTML++;
+    formatTimer(seconds);
   }, 1000);
   let millisecondsTimer = setInterval(function () {
-    milliseconds.innerHTML++;
+    milliseconds.innerHTML = Math.floor(new Date().getMilliseconds() / 10);
+    formatTimer(milliseconds);
   }, 10);
 
   stopInp.addEventListener("click", () => {
@@ -44,14 +52,17 @@ startInp.addEventListener("click", () => {
     }, 10);
     minutesTimer = setInterval(function () {
       minutes.innerHTML++;
+      formatTimer(minutes);
     }, 60000);
     secondsTimer = setInterval(function () {
       seconds.innerHTML++;
+      formatTimer(seconds);
     }, 1000);
     millisecondsTimer = setInterval(function () {
-      milliseconds.innerHTML++;
+      milliseconds.innerHTML = Math.floor(new Date().getMilliseconds() / 10);
+      formatTimer(milliseconds);
     }, 10);
-    
+
     stopInp.addEventListener("click", () => {
       stopTimer(minutesTimer, secondsTimer, millisecondsTimer);
     });
