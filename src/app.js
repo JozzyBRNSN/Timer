@@ -32,12 +32,6 @@ function stopTimer(minutesTimer, secondsTimer, millisecondsTimer) {
   clearInterval(millisecondsTimer);
 }
 
-function createLap(minutes, seconds, milliseconds) {
-  let lapsMinResults = document.createElement("span");
-  laps.appendChild(lapsMinResults);
-  lapsMinResults.innerHTML = minutes.innerHTML;
-}
-
 function clearTimer(minutes, seconds, milliseconds) {
   minutes.innerHTML = "00";
   seconds.innerHTML = "00";
